@@ -1,0 +1,32 @@
+<!doctype html>
+<html>
+<body>
+<div id="main">
+  <div class="header">
+    <h1><%= @title %></h1>
+  </div>
+
+  <div class="content">
+    <%= yield %>
+  </div>
+
+  <% if params[:name] %>
+    <hr>
+  <% end %>
+
+  <div class="users">
+    <% @users.each do |name, info| %>
+      <ul>
+        <% unless name.to_s == params[:name] %>
+        <li><a href='<%=name%>'><%= name %></a></li>
+        <% end %>
+      </ul>
+    <% end %>
+  </div>
+
+  <div class="count">
+    <p>There are <%= @users.length %> users with a total of <%= count_interests %> interests.</p>
+  </div>
+</div>
+</body>
+</html>
